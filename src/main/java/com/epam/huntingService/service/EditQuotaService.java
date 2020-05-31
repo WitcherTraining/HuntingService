@@ -27,6 +27,7 @@ import static com.epam.huntingService.service.ServiceConstants.SHOW_QUOTA_SERVIC
 public class EditQuotaService implements Service {
     private FactoryDAO factoryDAO = FactoryDAO.getInstance();
     private ServiceFactory serviceFactory = ServiceFactory.getInstance();
+    private QuotaFactory quotaFactory = QuotaFactory.getInstance();
     private AnimalQuotaHistoryDAO animalQuotaHistoryDAO = (AnimalQuotaHistoryDAOImpl) factoryDAO.getDAO(ANIMAL_QUOTA_HISTORY_DAO);
 
     @Override
@@ -44,7 +45,7 @@ public class EditQuotaService implements Service {
                 dispatcher = request.getRequestDispatcher(QUOTA_JSP);
                 dispatcher.forward(request, response);
             } else {
-                AnimalQuotaHistory animalQuotaHistory = QuotaFactory.fillQuota(request, session);
+                AnimalQuotaHistory animalQuotaHistory = quotaFactory.fillQuota(request, session);
                 animalQuotaHistory.setId(Long.parseLong(request.getParameter(QUOTA_ID)));
                 animalQuotaHistoryDAO.update(animalQuotaHistory.getId(), languageID, animalQuotaHistory);
                 serviceFactory.getService(SHOW_QUOTA_SERVICE).execute(request, response);

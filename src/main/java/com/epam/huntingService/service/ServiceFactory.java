@@ -43,6 +43,7 @@ public class ServiceFactory {
         SERVICE_MAP.put(SHOW_ALL_ANIMALS_SERVICE, new ShowAllAnimalsService());
         SERVICE_MAP.put(ADD_ANIMAL_SERVICE, new AddAnimalService());
         SERVICE_MAP.put(PREPARE_ANIMAL_EDITING_SERVICE, new PrepareAnimalEditingService());
+        SERVICE_MAP.put(PREPARE_PERMIT_TO_PRINT_SERVICE, new PreparePermitToPrintService());
         SERVICE_MAP.put(EDIT_ANIMAL_SERVICE, new EditAnimalService());
         SERVICE_MAP.put(SHOW_ALL_PERMITS_SERVICE, new ShowAllPermitsService());
         SERVICE_MAP.put(SHOW_ANIMALS_LIMIT_SERVICE, new ShowAnimalsLimitService());

@@ -6,6 +6,7 @@ import com.epam.huntingService.database.dao.impl.AnimalDAOImpl;
 import com.epam.huntingService.entity.Animal;
 import com.epam.huntingService.service.factory.AnimalFactory;
 import com.epam.huntingService.validator.AccessValidator;
+import com.epam.huntingService.validator.AnimalValidator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,10 +23,10 @@ import static com.epam.huntingService.util.ErrorConstants.*;
 import static com.epam.huntingService.util.PageNameConstants.ACCESS_ERROR_JSP;
 import static com.epam.huntingService.util.PageNameConstants.ANIMALS_JSP;
 import static com.epam.huntingService.util.ParameterNamesConstants.*;
-import static com.epam.huntingService.validator.AnimalValidator.isAnimalExist;
 
 public class AddAnimalService implements Service {
     private FactoryDAO factoryDAO = FactoryDAO.getInstance();
+    private AnimalValidator animalValidator = AnimalValidator.getInstance();
     private ServiceFactory serviceFactory = ServiceFactory.getInstance();
     private AnimalFactory animalFactory = AnimalFactory.getInstance();
     private AnimalDAO animalDAO = (AnimalDAOImpl) factoryDAO.getDAO(ANIMAL_DAO);
@@ -44,7 +45,7 @@ public class AddAnimalService implements Service {
                 request.setAttribute(EMPTY_DATA, FILL_DATA_ERROR);
                 dispatcher = request.getRequestDispatcher(ANIMALS_JSP);
                 dispatcher.forward(request, response);
-            } else if (isAnimalExist(animalNames, animalsNameParams)) {
+            } else if (animalValidator.isAnimalExist(animalNames, animalsNameParams)) {
                 request.setAttribute(WRONG_ANIMAL_DATA, ANIMAL_ERROR);
                 dispatcher = request.getRequestDispatcher(ANIMALS_JSP);
                 dispatcher.forward(request, response);

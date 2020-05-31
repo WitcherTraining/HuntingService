@@ -4,6 +4,7 @@ import com.epam.huntingService.database.dao.factory.FactoryDAO;
 import com.epam.huntingService.database.dao.interfaces.UserDAO;
 import com.epam.huntingService.database.dao.impl.UserDAOImpl;
 import com.epam.huntingService.entity.User;
+import com.epam.huntingService.util.ErrorManager;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.servlet.RequestDispatcher;
@@ -18,7 +19,6 @@ import java.text.ParseException;
 import static com.epam.huntingService.database.dao.factory.ImplEnum.USER_DAO;
 import static com.epam.huntingService.util.ErrorConstants.AUTH_ERROR;
 import static com.epam.huntingService.util.ErrorConstants.LOGIN_ERROR;
-import static com.epam.huntingService.util.ErrorManager.getErrorFromLanguageBundle;
 import static com.epam.huntingService.util.PageNameConstants.MAIN_JSP;
 import static com.epam.huntingService.util.ParameterNamesConstants.*;
 import static com.epam.huntingService.service.ServiceConstants.FORWARD_SERVICE;
@@ -45,6 +45,8 @@ public class LoginService implements Service {
 
         if (user != null) {
             session.setAttribute(USER_ID, user.getId());
+            session.setAttribute(NAME, user.getName());
+            session.setAttribute(SURNAME, user.getSurname());
             session.setAttribute(LOGIN, login);
             session.setAttribute(ROLE, user.getRole());
             session.setAttribute(ROLE_ID, user.getRoleID());
@@ -52,7 +54,7 @@ public class LoginService implements Service {
             session.setAttribute(PHONE, user.getPhone());
             serviceFactory.getService(FORWARD_SERVICE).execute(request, response);
         } else {
-            request.setAttribute(AUTH_ERROR, getErrorFromLanguageBundle(request, LOGIN_ERROR));
+            request.setAttribute(AUTH_ERROR, ErrorManager.getErrorFromLanguageBundle(request, LOGIN_ERROR));
             dispatcher = request.getRequestDispatcher(MAIN_JSP);
             dispatcher.forward(request, response);
         }

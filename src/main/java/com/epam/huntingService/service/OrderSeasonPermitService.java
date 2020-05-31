@@ -28,6 +28,7 @@ import static com.epam.huntingService.validator.PermitValidator.*;
 
 public class OrderSeasonPermitService implements Service {
     private FactoryDAO factoryDAO = FactoryDAO.getInstance();
+    private PermitFactory permitFactory = PermitFactory.getInstance();
     private ServiceFactory serviceFactory = ServiceFactory.getInstance();
     private OrganizationDAO organizationDAO = (OrganizationDAOImpl) factoryDAO.getDAO(ORGANIZATION_DAO);
     private int countAnimalsForHunt;
@@ -50,9 +51,9 @@ public class OrderSeasonPermitService implements Service {
                 countAnimalsForHunt = Integer.parseInt(request.getParameter(COUNT_ANIMALS_FOR_HUNT));
             }
 
-            CartItem cartItem = PermitFactory.getCartItem(cartItems, request);
+            CartItem cartItem = permitFactory.getCartItem(cartItems, request);
             Long organizationID = organizationDAO.takeOrganizationIdByName(cartItem.getOrganizationName());
-            Permit permit = PermitFactory.fillSeasonPermit(cartItem, countAnimalsForHunt, idUser, organizationID);
+            Permit permit = permitFactory.fillSeasonPermit(cartItem, countAnimalsForHunt, idUser, organizationID);
 
             if (isHuntingSeasonIsOver(permit.getOrderDate(),cartItem.getAnimalTermEndUDate())){
                 request.setAttribute(WRONG_HUNTING_DATE, HUNTING_DATE_ERROR);
@@ -63,7 +64,7 @@ public class OrderSeasonPermitService implements Service {
                 dispatcher = request.getRequestDispatcher(CART_JSP);
                 dispatcher.forward(request, response);
             } else {
-                PermitFactory.createPermitOperations(cartItem, permit);
+                permitFactory.createPermitOperations(cartItem, permit);
                 serviceFactory.getService(REMOVE_FROM_CART_SERVICE).execute(request, response);
             }
         } else {

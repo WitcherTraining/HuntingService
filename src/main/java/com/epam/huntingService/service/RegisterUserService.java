@@ -4,6 +4,7 @@ import com.epam.huntingService.database.dao.factory.FactoryDAO;
 import com.epam.huntingService.database.dao.interfaces.UserDAO;
 import com.epam.huntingService.database.dao.impl.UserDAOImpl;
 import com.epam.huntingService.entity.User;
+import com.epam.huntingService.service.factory.UserFactory;
 import com.epam.huntingService.validator.AccessValidator;
 
 import javax.servlet.RequestDispatcher;
@@ -16,7 +17,6 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.USER_DAO;
-import static com.epam.huntingService.service.factory.UserFactory.fillUser;
 import static com.epam.huntingService.util.ErrorConstants.*;
 import static com.epam.huntingService.util.PageNameConstants.*;
 import static com.epam.huntingService.util.ParameterNamesConstants.*;
@@ -25,6 +25,7 @@ import static com.epam.huntingService.validator.AuthorizationValidator.*;
 
 public class RegisterUserService implements Service {
     private FactoryDAO factoryDAO = FactoryDAO.getInstance();
+    private UserFactory userFactory = UserFactory.getInstance();
     private UserDAO userDAO = (UserDAOImpl) factoryDAO.getDAO(USER_DAO);
 
     @Override
@@ -53,7 +54,7 @@ public class RegisterUserService implements Service {
                 dispatcher = request.getRequestDispatcher(REGISTRATION_JSP);
                 dispatcher.forward(request, response);
             } else {
-                User newUser = fillUser(request);
+                User newUser = userFactory.fillUser(request);
                 userDAO.create(newUser);
                 session.setAttribute(USER_ID, newUser.getId());
                 session.setAttribute(ROLE, newUser.getRole());

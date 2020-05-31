@@ -5,6 +5,7 @@ import com.epam.huntingService.database.dao.interfaces.AnimalDAO;
 import com.epam.huntingService.database.dao.impl.AnimalDAOImpl;
 import com.epam.huntingService.entity.Animal;
 import com.epam.huntingService.entity.AnimalLimitHistory;
+import com.epam.huntingService.service.factory.LimitFactory;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,7 +19,6 @@ import java.util.Date;
 import java.util.List;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.ANIMAL_DAO;
-import static com.epam.huntingService.service.factory.LimitFactory.fillLimitList;
 import static com.epam.huntingService.util.DateConverter.*;
 import static com.epam.huntingService.util.ErrorConstants.WRONG_YEAR_DATA;
 import static com.epam.huntingService.util.ErrorConstants.YEAR_ERROR;
@@ -27,6 +27,7 @@ import static com.epam.huntingService.util.ParameterNamesConstants.*;
 
 public class ShowAnimalsLimitService implements Service {
     private FactoryDAO factoryDAO = FactoryDAO.getInstance();
+    private LimitFactory limitFactory = LimitFactory.getInstance();
     private AnimalDAO animalDAO = (AnimalDAOImpl) factoryDAO.getDAO(ANIMAL_DAO);
 
     @Override
@@ -40,7 +41,7 @@ public class ShowAnimalsLimitService implements Service {
         java.sql.Date todaySql = new java.sql.Date(new Date().getTime());
 
         if (request.getParameter(CHOSEN_YEAR).length() != ZERO_REQUEST_LENGTH && chosenYear <= getCurrentYear()) {
-            List<AnimalLimitHistory> animalLimitHistories = fillLimitList(languageID, chosenYear);
+            List<AnimalLimitHistory> animalLimitHistories = limitFactory.fillLimitList(languageID, chosenYear);
             session.setAttribute(ANIMALS_FOR_LIMIT, animalsForLimit);
             session.setAttribute(TODAY, todaySql);
             session.setAttribute(ANIMAL_LIMIT_HISTORIES, animalLimitHistories);

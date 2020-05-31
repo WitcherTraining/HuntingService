@@ -15,6 +15,7 @@ public class PageNameConstants {
     public static final String EDIT_PROFILE_JSP = "/edit_profile.jsp";
     public static final String EDIT_PASSWORD_JSP = "/edit_password.jsp";
     public static final String CABINET_JSP = "/cabinet.jsp";
+    public static final String PERMIT_PRINT_JSP = "/print_permit.jsp";
     public static final String ERROR_JSP = "/error.jsp";
     public static final String MAIN_JSP = "/main.jsp";
     public static final String CART_JSP = "/cart.jsp";

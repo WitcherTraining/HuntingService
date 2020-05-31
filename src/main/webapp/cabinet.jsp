@@ -88,6 +88,13 @@
                                 <fmt:message key="label.money"/>
                             </td>
                             <td><fmt:formatDate value="${permit.huntingDay}" pattern="d MMMM yyyy"/></td>
+                            <td>
+                                <form action="PreparePermitToPrint" method="get">
+                                    <input type="hidden" name="permitID" value="${permit.id}">
+                                    <input type="submit" class="btn btn-primary btn-sm"
+                                           value="<fmt:message key="button.print.permit"/>">
+                                </form>
+                            </td>
                         </tr>
                     </c:if>
                 </c:forEach>
@@ -126,6 +133,13 @@
                             <td>
                                 <fmt:formatNumber value="${permit.totalCost}" pattern="###.##"/>
                                 <fmt:message key="label.money"/>
+                            </td>
+                            <td>
+                                <form action="PreparePermitToPrint" method="get">
+                                    <input type="hidden" name="permitID" value="${permit.id}">
+                                    <input type="submit" class="btn btn-primary btn-sm"
+                                           value="<fmt:message key="button.print.permit"/>">
+                                </form>
                             </td>
                         </tr>
                     </c:if>

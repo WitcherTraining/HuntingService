@@ -6,6 +6,7 @@ import com.epam.huntingService.database.dao.interfaces.HuntingGroundDAO;
 import com.epam.huntingService.database.dao.impl.AnimalDAOImpl;
 import com.epam.huntingService.database.dao.impl.HuntingGroundDAOImpl;
 import com.epam.huntingService.entity.*;
+import com.epam.huntingService.service.factory.QuotaFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,12 +19,12 @@ import java.util.List;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.ANIMAL_DAO;
 import static com.epam.huntingService.database.dao.factory.ImplEnum.HUNTING_GROUND_DAO;
-import static com.epam.huntingService.service.factory.QuotaFactory.prepareQuotas;
 import static com.epam.huntingService.util.PageNameConstants.QUOTA_JSP;
 import static com.epam.huntingService.util.ParameterNamesConstants.*;
 
 public class ShowQuotaService implements Service {
     private FactoryDAO factoryDAO = FactoryDAO.getInstance();
+    private QuotaFactory quotaFactory = QuotaFactory.getInstance();
     private AnimalDAO animalDAO = (AnimalDAOImpl) factoryDAO.getDAO(ANIMAL_DAO);
     private HuntingGroundDAO huntingGroundDAO = (HuntingGroundDAOImpl) factoryDAO.getDAO(HUNTING_GROUND_DAO);
 
@@ -34,7 +35,7 @@ public class ShowQuotaService implements Service {
         Integer languageID = (Integer) session.getAttribute(LANGUAGE_ID);
         Long huntingGroundID = Long.parseLong(request.getParameter(HUNTING_GROUND_ID));
         HuntingGround huntingGround = huntingGroundDAO.getByID(huntingGroundID, languageID);
-        List<AnimalQuotaHistory> animalQuotas = prepareQuotas(huntingGroundID, languageID);
+        List<AnimalQuotaHistory> animalQuotas = quotaFactory.prepareQuotas(huntingGroundID, languageID);
         List<Animal> animals = animalDAO.getAll(languageID);
 
         session.setAttribute(ANIMAL_QUOTAS, animalQuotas);

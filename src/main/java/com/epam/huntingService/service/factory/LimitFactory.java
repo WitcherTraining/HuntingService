@@ -1,5 +1,6 @@
 package com.epam.huntingService.service.factory;
 
+import com.epam.huntingService.database.dao.factory.FactoryDAO;
 import com.epam.huntingService.database.dao.interfaces.AnimalDAO;
 import com.epam.huntingService.database.dao.interfaces.AnimalLimitHistoryDAO;
 import com.epam.huntingService.database.dao.impl.AnimalDAOImpl;
@@ -12,13 +13,20 @@ import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.util.List;
 
+import static com.epam.huntingService.database.dao.factory.ImplEnum.ANIMAL_DAO;
+import static com.epam.huntingService.database.dao.factory.ImplEnum.ANIMAL_LIMIT_HISTORY_DAO;
 import static com.epam.huntingService.util.ParameterNamesConstants.*;
 
 public class LimitFactory {
-    private static AnimalDAO animalDAO = new AnimalDAOImpl();
-    private static AnimalLimitHistoryDAO animalLimitHistoryDAO = new AnimalLimitHistoryDAOImpl();
+    private static LimitFactory instance = new LimitFactory();
+    private FactoryDAO factoryDAO = FactoryDAO.getInstance();
+    private AnimalDAO animalDAO = (AnimalDAOImpl) factoryDAO.getDAO(ANIMAL_DAO);
+    private AnimalLimitHistoryDAO animalLimitHistoryDAO = (AnimalLimitHistoryDAOImpl) factoryDAO.getDAO(ANIMAL_LIMIT_HISTORY_DAO);
 
-    public static AnimalLimitHistory fillAnimalLimitHistory(HttpServletRequest request, HttpSession session) throws SQLException {
+    private LimitFactory() {
+    }
+
+    public AnimalLimitHistory fillAnimalLimitHistory(HttpServletRequest request, HttpSession session) throws SQLException {
         AnimalLimitHistory animalLimitHistory = new AnimalLimitHistory();
         Animal animal = animalDAO.takeByName(request.getParameter(ANIMAL_NAME));
         Integer chosenYear = (Integer) session.getAttribute(CHOSEN_YEAR);
@@ -34,13 +42,20 @@ public class LimitFactory {
         return animalLimitHistory;
     }
 
-    public static List<AnimalLimitHistory> fillLimitList(Integer languageID, Integer year) throws SQLException {
+    public List<AnimalLimitHistory> fillLimitList(Integer languageID, Integer year) throws SQLException {
         List<AnimalLimitHistory> animalLimitHistories = animalLimitHistoryDAO.getAllByYear(year);
 
-        for (AnimalLimitHistory animalLimitHistory: animalLimitHistories){
+        for (AnimalLimitHistory animalLimitHistory : animalLimitHistories) {
             Animal animal = animalDAO.getByID(animalLimitHistory.getAnimalID(), languageID);
             animalLimitHistory.setAnimal(animal);
         }
         return animalLimitHistories;
+    }
+
+    public static LimitFactory getInstance() {
+        if (instance == null) {
+            instance = new LimitFactory();
+        }
+        return instance;
     }
 }

@@ -12,8 +12,9 @@ import java.util.List;
 public class AnimalValidator {
     private static final int ANIMALS_NONE = 0;
     private static AnimalDAO animalDAO = new AnimalDAOImpl();
+    private static AnimalValidator instance = new AnimalValidator();
 
-    public static boolean isAnimalExist(List<Animal> animals, String animalName) {
+    public boolean isAnimalExist(List<Animal> animals, String animalName) {
         boolean isExist = false;
         for (Animal an : animals) {
             if (an.getName().equalsIgnoreCase(animalName)) {
@@ -23,7 +24,7 @@ public class AnimalValidator {
         return isExist;
     }
 
-    public static boolean isAnimalExist(List<String> animalNames, String[] animalsNameParams) {
+    public boolean isAnimalExist(List<String> animalNames, String[] animalsNameParams) {
         List<Boolean> checks = new ArrayList<>();
         boolean isExist = false;
         for (String animalName : animalsNameParams) {
@@ -39,7 +40,7 @@ public class AnimalValidator {
         return isExist;
     }
 
-    public static boolean isAnimalLimitExist(List<AnimalLimitHistory> limitHistories, String animalName) throws SQLException {
+    public boolean isAnimalLimitExist(List<AnimalLimitHistory> limitHistories, String animalName) throws SQLException {
         boolean isLimitExist = false;
         Animal animalForCheck = animalDAO.takeByName(animalName);
         for (AnimalLimitHistory animalLimitHistory : limitHistories) {
@@ -50,5 +51,12 @@ public class AnimalValidator {
             }
         }
         return isLimitExist;
+    }
+
+    public static AnimalValidator getInstance() {
+        if (instance == null) {
+            instance = new AnimalValidator();
+        }
+        return instance;
     }
 }

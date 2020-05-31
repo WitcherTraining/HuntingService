@@ -1,6 +1,7 @@
 package com.epam.huntingService.service;
 
 import com.epam.huntingService.entity.CartItem;
+import com.epam.huntingService.service.factory.CartItemFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,11 +12,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import static com.epam.huntingService.service.factory.CartItemFactory.setCartItemParameters;
 import static com.epam.huntingService.util.PageNameConstants.HUNTING_GROUND_JSP;
 import static com.epam.huntingService.util.ParameterNamesConstants.*;
 
 public class AddToCartService implements Service {
+    private CartItemFactory cartItemFactory = CartItemFactory.getInstance();
     private final Integer COUNTER_BEGIN = 1;
     private Integer itemsCounter = COUNTER_BEGIN;
 
@@ -30,11 +31,11 @@ public class AddToCartService implements Service {
 
         if (cartItems == null) {
             cartItems = new ArrayList<>();
-            CartItem cartItem = setCartItemParameters(request, session, itemsCounter);
+            CartItem cartItem = cartItemFactory.setCartItemParameters(request, session, itemsCounter);
             cartItems.add(cartItem);
         } else {
             itemsCounter++;
-            CartItem cartItem = setCartItemParameters(request, session, itemsCounter);
+            CartItem cartItem = cartItemFactory.setCartItemParameters(request, session, itemsCounter);
             cartItems.add(cartItem);
         }
 

@@ -77,6 +77,7 @@ public class ParameterNamesConstants {
     public static final String ORGANIZATION_ID = "organizationID";
     public static final String EMAIL = "email";
     public static final String SURNAME = "surname";
+    public static final String BASE_64_QR = "qrBase64";
     public static final String PHONE = "phone";
     public static final String OLD_PASSWORD = "oldPassword";
     public static final String PASSWORD = "password";
@@ -96,6 +97,8 @@ public class ParameterNamesConstants {
     public static final String ITEM_ID = "ItemID";
     public static final String SEARCH_SEQUENCE = "searchSequence";
     public static final String PERMIT_TYPE = "permitType";
+    public static final String PERMIT_ID = "permitID";
+    public static final String PERMIT = "permit";
     public static final String ANIMAL_TERM_BEGIN = "animalTermBegin";
     public static final String ANIMAL_TERM_END = "animalTermEnd";
     public static final String ANIMAL_COST = "animalCost";

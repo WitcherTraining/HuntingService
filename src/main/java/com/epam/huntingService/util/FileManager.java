@@ -44,6 +44,20 @@ public class FileManager {
         }
     }
 
+    public String convertToBase64(ByteArrayOutputStream out) throws IOException {
+
+        String base64String;
+
+        if (out == null) {
+            return EMPTY_STRING;
+        } else {
+            byte[] imageBytes = out.toByteArray();
+            base64String = Base64.getEncoder().encodeToString(imageBytes);
+            out.close();
+            return base64String;
+        }
+    }
+
     public void downloadFile(HttpServletResponse response, Blob document) throws IOException, SQLException {
         response.setContentType(PDF_CONTENT_TYPE);
         response.setHeader(CONTENT_DISPOSITION, DEFAULT_FILE_NAME);
@@ -53,10 +67,10 @@ public class FileManager {
 
         ServletOutputStream outputStream = response.getOutputStream();
 
-        byte[]outputByte = new byte[MAX_SIZE];
+        byte[] outputByte = new byte[MAX_SIZE];
         int bytesRead;
 
-        while((bytesRead = inputStream.read(outputByte)) != FILE_OVER) {
+        while ((bytesRead = inputStream.read(outputByte)) != FILE_OVER) {
             outputStream.write(outputByte, START_OFFSET, bytesRead);
         }
 

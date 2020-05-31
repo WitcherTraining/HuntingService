@@ -35,6 +35,7 @@ public class SearchService implements Service {
     private FactoryDAO factoryDAO = FactoryDAO.getInstance();
     private HuntingGroundFactory huntingGroundFactory = HuntingGroundFactory.getInstance();
     private OrganizationFactory organizationFactory = OrganizationFactory.getInstance();
+    private AnimalValidator animalValidator = AnimalValidator.getInstance();
     private HuntingGroundDAO huntingGroundDAO = (HuntingGroundDAOImpl) factoryDAO.getDAO(HUNTING_GROUND_DAO);
     private AnimalDAO animalDAO = (AnimalDAOImpl) factoryDAO.getDAO(ANIMAL_DAO);
     private OrganizationDAO organizationDAO = (OrganizationDAOImpl) factoryDAO.getDAO(ORGANIZATION_DAO);
@@ -58,7 +59,7 @@ public class SearchService implements Service {
             Long huntingGroundID = huntingGroundDAO.takeIDByName(searchSequence);
             setSearchingParameters(request, response, session, searchSequence, huntingGroundID, HUNTING_GROUND_ID,
                     HUNTING_GROUND_NAME);
-        } else if (AnimalValidator.isAnimalExist(animals, searchSequence)) {
+        } else if (animalValidator.isAnimalExist(animals, searchSequence)) {
             List<HuntingGround> huntingGroundsWithThisAnimal =
                     huntingGroundDAO.getAllWithThisAnimal(searchSequence, languageID);
             session.setAttribute(HUNTING_GROUNDS_WITH_THIS_ANIMAL, huntingGroundsWithThisAnimal);

@@ -8,8 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import static com.epam.huntingService.util.ParameterNamesConstants.*;
 
 public class UserFactory {
+    private static UserFactory instance = new UserFactory();
 
-    public static User fillUser(HttpServletRequest request) {
+    private UserFactory() {
+    }
+
+    public User fillUser(HttpServletRequest request) {
         User newUser = new User();
         newUser.setName(request.getParameter(NAME));
         newUser.setSurname(request.getParameter(SURNAME));
@@ -21,5 +25,12 @@ public class UserFactory {
         newUser.setPassword(securedPassword);
         newUser.setRole(USER);
         return newUser;
+    }
+
+    public static UserFactory getInstance() {
+        if (instance == null) {
+            instance = new UserFactory();
+        }
+        return instance;
     }
 }

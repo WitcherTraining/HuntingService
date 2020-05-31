@@ -1,5 +1,6 @@
 package com.epam.huntingService.service.factory;
 
+import com.epam.huntingService.database.dao.factory.FactoryDAO;
 import com.epam.huntingService.database.dao.interfaces.AnimalQuotaHistoryDAO;
 import com.epam.huntingService.database.dao.interfaces.HuntingGroundDAO;
 import com.epam.huntingService.database.dao.impl.AnimalQuotaHistoryDAOImpl;
@@ -11,13 +12,20 @@ import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.util.Date;
 
+import static com.epam.huntingService.database.dao.factory.ImplEnum.ANIMAL_QUOTA_HISTORY_DAO;
+import static com.epam.huntingService.database.dao.factory.ImplEnum.HUNTING_GROUND_DAO;
 import static com.epam.huntingService.util.ParameterNamesConstants.*;
 
 public class CartItemFactory {
-    private static HuntingGroundDAO huntingGroundDAO = new HuntingGroundDAOImpl();
-    private static AnimalQuotaHistoryDAO animalQuotaHistoryDAO = new AnimalQuotaHistoryDAOImpl();
+    private static CartItemFactory instance = new CartItemFactory();
+    private FactoryDAO factoryDAO = FactoryDAO.getInstance();
+    private HuntingGroundDAO huntingGroundDAO = (HuntingGroundDAOImpl) factoryDAO.getDAO(HUNTING_GROUND_DAO);
+    private AnimalQuotaHistoryDAO animalQuotaHistoryDAO = (AnimalQuotaHistoryDAOImpl) factoryDAO.getDAO(ANIMAL_QUOTA_HISTORY_DAO);
 
-    public static CartItem setCartItemParameters(HttpServletRequest request, HttpSession session, Integer itemsCounter) throws SQLException {
+    private CartItemFactory() {
+    }
+
+    public CartItem setCartItemParameters(HttpServletRequest request, HttpSession session, Integer itemsCounter) throws SQLException {
         CartItem cartItem = new CartItem();
 
         Integer languageID = (Integer) session.getAttribute(LANGUAGE_ID);
@@ -48,5 +56,12 @@ public class CartItemFactory {
                 cartItem.getAnimalID());
         cartItem.setAnimalQuota(animalQuota);
         return cartItem;
+    }
+
+    public static CartItemFactory getInstance() {
+        if (instance == null) {
+            instance = new CartItemFactory();
+        }
+        return instance;
     }
 }

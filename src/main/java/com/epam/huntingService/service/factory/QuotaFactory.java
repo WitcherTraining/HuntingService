@@ -1,5 +1,6 @@
 package com.epam.huntingService.service.factory;
 
+import com.epam.huntingService.database.dao.factory.FactoryDAO;
 import com.epam.huntingService.database.dao.interfaces.AnimalDAO;
 import com.epam.huntingService.database.dao.interfaces.AnimalQuotaHistoryDAO;
 import com.epam.huntingService.database.dao.interfaces.HuntingGroundDAO;
@@ -16,14 +17,21 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+import static com.epam.huntingService.database.dao.factory.ImplEnum.*;
 import static com.epam.huntingService.util.ParameterNamesConstants.*;
 
 public class QuotaFactory {
-    private static AnimalDAO animalDAO = new AnimalDAOImpl();
-    private static AnimalQuotaHistoryDAO animalQuotaHistoryDAO = new AnimalQuotaHistoryDAOImpl();
-    private static HuntingGroundDAO huntingGroundDAO = new HuntingGroundDAOImpl();
+    private static QuotaFactory instance = new QuotaFactory();
+    private FactoryDAO factoryDAO = FactoryDAO.getInstance();
 
-    public static AnimalQuotaHistory fillQuota(HttpServletRequest request, HttpSession session) throws SQLException {
+    private AnimalDAO animalDAO = (AnimalDAOImpl) factoryDAO.getDAO(ANIMAL_DAO);
+    private AnimalQuotaHistoryDAO animalQuotaHistoryDAO = (AnimalQuotaHistoryDAOImpl) factoryDAO.getDAO(ANIMAL_QUOTA_HISTORY_DAO);
+    private HuntingGroundDAO huntingGroundDAO = (HuntingGroundDAOImpl) factoryDAO.getDAO(HUNTING_GROUND_DAO);
+
+    private QuotaFactory() {
+    }
+
+    public AnimalQuotaHistory fillQuota(HttpServletRequest request, HttpSession session) throws SQLException {
         AnimalQuotaHistory animalQuotaHistory = new AnimalQuotaHistory();
 
         animalQuotaHistory.setYear((Integer) session.getAttribute(CURRENT_YEAR));
@@ -37,15 +45,22 @@ public class QuotaFactory {
         return animalQuotaHistory;
     }
 
-    public static List<AnimalQuotaHistory> prepareQuotas(Long huntingGroundID, Integer languageID) throws SQLException, IOException {
+    public List<AnimalQuotaHistory> prepareQuotas(Long huntingGroundID, Integer languageID) throws SQLException, IOException {
         List<AnimalQuotaHistory> animalQuotas = animalQuotaHistoryDAO.getAllByID(huntingGroundID);
 
-        for (AnimalQuotaHistory animalQuotaHistory: animalQuotas){
+        for (AnimalQuotaHistory animalQuotaHistory : animalQuotas) {
             HuntingGround huntingGround = huntingGroundDAO.getByID(animalQuotaHistory.getHuntingGroundID(), languageID);
             animalQuotaHistory.setHuntingGround(huntingGround);
             Animal animal = animalDAO.getByID(animalQuotaHistory.getAnimalID(), languageID);
             animalQuotaHistory.setAnimal(animal);
         }
         return animalQuotas;
+    }
+
+    public static QuotaFactory getInstance() {
+        if (instance == null) {
+            instance = new QuotaFactory();
+        }
+        return instance;
     }
 }

@@ -7,7 +7,9 @@ import com.epam.huntingService.database.dao.impl.AnimalDAOImpl;
 import com.epam.huntingService.database.dao.impl.AnimalLimitHistoryDAOImpl;
 import com.epam.huntingService.entity.Animal;
 import com.epam.huntingService.entity.AnimalLimitHistory;
+import com.epam.huntingService.service.factory.LimitFactory;
 import com.epam.huntingService.validator.AccessValidator;
+import com.epam.huntingService.validator.AnimalValidator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,19 +23,18 @@ import java.util.List;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.ANIMAL_DAO;
 import static com.epam.huntingService.database.dao.factory.ImplEnum.ANIMAL_LIMIT_HISTORY_DAO;
-import static com.epam.huntingService.service.factory.LimitFactory.fillAnimalLimitHistory;
 import static com.epam.huntingService.util.DateConverter.getCurrentYear;
 import static com.epam.huntingService.util.ErrorConstants.*;
 import static com.epam.huntingService.util.PageNameConstants.ACCESS_ERROR_JSP;
 import static com.epam.huntingService.util.PageNameConstants.LIMIT_JSP;
 import static com.epam.huntingService.util.ParameterNamesConstants.*;
 import static com.epam.huntingService.service.ServiceConstants.ADD_ANIMAL_LIMIT_SERVICE;
-import static com.epam.huntingService.validator.AnimalValidator.isAnimalExist;
-import static com.epam.huntingService.validator.AnimalValidator.isAnimalLimitExist;
 
 public class AddAnimalLimitService implements Service {
     private FactoryDAO factoryDAO = FactoryDAO.getInstance();
     private ServiceFactory serviceFactory = ServiceFactory.getInstance();
+    private LimitFactory limitFactory = LimitFactory.getInstance();
+    private AnimalValidator animalValidator = AnimalValidator.getInstance();
     private AnimalLimitHistoryDAO animalLimitHistoryDAO = (AnimalLimitHistoryDAOImpl) factoryDAO.getDAO(ANIMAL_LIMIT_HISTORY_DAO);
     private AnimalDAO animalDAO = (AnimalDAOImpl) factoryDAO.getDAO(ANIMAL_DAO);
 
@@ -58,16 +59,16 @@ public class AddAnimalLimitService implements Service {
                 request.setAttribute(EMPTY_DATA, FILL_DATA_ERROR);
                 dispatcher = request.getRequestDispatcher(LIMIT_JSP);
                 dispatcher.forward(request, response);
-            } else if (!isAnimalExist(animals, request.getParameter(ANIMAL_NAME))) {
+            } else if (!animalValidator.isAnimalExist(animals, request.getParameter(ANIMAL_NAME))) {
                 request.setAttribute(ANIMAL_IS_NOT_EXIST_IN_SERVICE, NOT_EXISTING_ANIMAL_ERROR);
                 dispatcher = request.getRequestDispatcher(LIMIT_JSP);
                 dispatcher.forward(request, response);
-            } else if (isAnimalLimitExist(limitHistories, request.getParameter(ANIMAL_NAME))) {
+            } else if (animalValidator.isAnimalLimitExist(limitHistories, request.getParameter(ANIMAL_NAME))) {
                 request.setAttribute(WRONG_LIMIT_DATA, LIMIT_DATA_ERROR);
                 dispatcher = request.getRequestDispatcher(LIMIT_JSP);
                 dispatcher.forward(request, response);
             } else {
-                AnimalLimitHistory animalLimitHistory = fillAnimalLimitHistory(request, session);
+                AnimalLimitHistory animalLimitHistory = limitFactory.fillAnimalLimitHistory(request, session);
                 animalLimitHistoryDAO.create(animalLimitHistory);
                 serviceFactory.getService(ADD_ANIMAL_LIMIT_SERVICE).execute(request, response);
             }

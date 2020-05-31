@@ -26,7 +26,6 @@ public class HuntingServiceController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String requestString = request.getRequestURI();
-        System.out.println(requestString);
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         Service service = serviceFactory.getService(requestString);
         try {

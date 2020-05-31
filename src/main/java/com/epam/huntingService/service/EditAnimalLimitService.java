@@ -27,6 +27,7 @@ import static com.epam.huntingService.service.ServiceConstants.SHOW_ANIMALS_LIMI
 public class EditAnimalLimitService implements Service {
     private FactoryDAO factoryDAO = FactoryDAO.getInstance();
     private ServiceFactory serviceFactory = ServiceFactory.getInstance();
+    private LimitFactory limitFactory = LimitFactory.getInstance();
     private AnimalLimitHistoryDAO animalLimitHistoryDAO = (AnimalLimitHistoryDAOImpl) factoryDAO.getDAO(ANIMAL_LIMIT_HISTORY_DAO);
 
     @Override
@@ -42,7 +43,7 @@ public class EditAnimalLimitService implements Service {
                     request.getParameter(COST_IN_MCI).length() != ZERO_REQUEST_LENGTH ||
                     request.getParameter(TERM_BEGIN).length() != ZERO_REQUEST_LENGTH ||
                     request.getParameter(TERM_END).length() != ZERO_REQUEST_LENGTH) {
-                AnimalLimitHistory animalLimitHistory = LimitFactory.fillAnimalLimitHistory(request, session);
+                AnimalLimitHistory animalLimitHistory = limitFactory.fillAnimalLimitHistory(request, session);
                 animalLimitHistory.setId(Long.parseLong(request.getParameter(LIMIT_ID)));
 
                 animalLimitHistoryDAO.update(animalLimitHistory.getId(), languageID, animalLimitHistory);

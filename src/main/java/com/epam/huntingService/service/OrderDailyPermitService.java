@@ -5,6 +5,7 @@ import com.epam.huntingService.database.dao.interfaces.OrganizationDAO;
 import com.epam.huntingService.database.dao.impl.OrganizationDAOImpl;
 import com.epam.huntingService.entity.Permit;
 import com.epam.huntingService.entity.CartItem;
+import com.epam.huntingService.service.factory.PermitFactory;
 import com.epam.huntingService.validator.AccessValidator;
 
 import javax.servlet.RequestDispatcher;
@@ -29,6 +30,7 @@ import static com.epam.huntingService.validator.PermitValidator.*;
 
 public class OrderDailyPermitService implements Service {
     private FactoryDAO factoryDAO = FactoryDAO.getInstance();
+    private PermitFactory permitFactory = PermitFactory.getInstance();
     private ServiceFactory serviceFactory = ServiceFactory.getInstance();
     private OrganizationDAO organizationDAO = (OrganizationDAOImpl) factoryDAO.getDAO(ORGANIZATION_DAO);
     private int countAnimalsForHunt;
@@ -55,9 +57,9 @@ public class OrderDailyPermitService implements Service {
                 countAnimalsForHunt = Integer.parseInt(request.getParameter(COUNT_ANIMALS_FOR_HUNT));
             }
 
-            CartItem cartItem = getCartItem(cartItems, request);
+            CartItem cartItem = permitFactory.getCartItem(cartItems, request);
             Long organizationID = organizationDAO.takeOrganizationIdByName(cartItem.getOrganizationName());
-            Permit permit = fillDailyPermit(cartItem, countAnimalsForHunt, idUser, huntingDayUtilDate, organizationID);
+            Permit permit = permitFactory.fillDailyPermit(cartItem, countAnimalsForHunt, idUser, huntingDayUtilDate, organizationID);
 
             if (!validateDailyPermitHuntingDate(permit.getHuntingDay(), cartItem.getAnimalTermEndUDate(),
                     cartItem.getAnimalTermBeginUDate())){
@@ -69,7 +71,7 @@ public class OrderDailyPermitService implements Service {
                 dispatcher = request.getRequestDispatcher(CART_JSP);
                 dispatcher.forward(request, response);
             } else {
-                createPermitOperations(cartItem, permit);
+                permitFactory.createPermitOperations(cartItem, permit);
                 serviceFactory.getService(REMOVE_FROM_CART_SERVICE).execute(request, response);
             }
         } else {
