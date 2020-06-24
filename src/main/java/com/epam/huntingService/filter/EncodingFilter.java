@@ -3,8 +3,8 @@ package com.epam.huntingService.filter;
 import javax.servlet.*;
 import java.io.IOException;
 
-import static com.epam.huntingService.util.ParameterNamesConstants.HTML_CONTENT_ENCODE;
-import static com.epam.huntingService.util.ParameterNamesConstants.UTF_ENCODE;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.HTML_CONTENT_ENCODE;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.UTF_ENCODE;
 
 public class EncodingFilter implements Filter {
     private static final String CONFIG_ENCODING = "encoding";

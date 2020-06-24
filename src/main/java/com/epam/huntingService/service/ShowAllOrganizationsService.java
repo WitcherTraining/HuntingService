@@ -12,9 +12,9 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
 
-import static com.epam.huntingService.util.PageNameConstants.ORGANIZATIONS_JSP;
-import static com.epam.huntingService.util.ParameterNamesConstants.LANGUAGE_ID;
-import static com.epam.huntingService.util.ParameterNamesConstants.ORGANIZATIONS;
+import static com.epam.huntingService.util.constants.PageNameConstants.ORGANIZATIONS_JSP;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.LANGUAGE_ID;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.ORGANIZATIONS;
 
 public class ShowAllOrganizationsService implements Service {
     private OrganizationFactory organizationFactory = OrganizationFactory.getInstance();

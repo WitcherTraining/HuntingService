@@ -15,9 +15,9 @@ import java.text.ParseException;
 import java.util.List;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.ANIMAL_DAO;
-import static com.epam.huntingService.util.PageNameConstants.ANIMALS_JSP;
-import static com.epam.huntingService.util.ParameterNamesConstants.ANIMALS;
-import static com.epam.huntingService.util.ParameterNamesConstants.LANGUAGE_ID;
+import static com.epam.huntingService.util.constants.PageNameConstants.ANIMALS_JSP;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.ANIMALS;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.LANGUAGE_ID;
 
 public class ShowAllAnimalsService implements Service {
     private FactoryDAO factoryDAO = FactoryDAO.getInstance();

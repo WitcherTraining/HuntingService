@@ -18,7 +18,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.*;
-import static com.epam.huntingService.util.ParameterNamesConstants.*;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.*;
 
 public class QuotaFactory {
     private static QuotaFactory instance = new QuotaFactory();

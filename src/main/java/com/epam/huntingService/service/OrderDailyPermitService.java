@@ -20,11 +20,10 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.ORGANIZATION_DAO;
-import static com.epam.huntingService.service.factory.PermitFactory.*;
-import static com.epam.huntingService.util.ErrorConstants.*;
-import static com.epam.huntingService.util.PageNameConstants.ACCESS_ERROR_JSP;
-import static com.epam.huntingService.util.PageNameConstants.CART_JSP;
-import static com.epam.huntingService.util.ParameterNamesConstants.*;
+import static com.epam.huntingService.util.constants.ErrorConstants.*;
+import static com.epam.huntingService.util.constants.PageNameConstants.ACCESS_ERROR_JSP;
+import static com.epam.huntingService.util.constants.PageNameConstants.CART_JSP;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.*;
 import static com.epam.huntingService.service.ServiceConstants.REMOVE_FROM_CART_SERVICE;
 import static com.epam.huntingService.validator.PermitValidator.*;
 

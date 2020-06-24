@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import static com.epam.huntingService.util.ParameterNamesConstants.*;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.*;
 
 public class LanguageFilter implements Filter {
     private static final String CONFIG_LANGUAGE_ID_NAME = "defaultLanguageID";

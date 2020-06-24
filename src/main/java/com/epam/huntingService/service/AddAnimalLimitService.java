@@ -24,10 +24,10 @@ import java.util.List;
 import static com.epam.huntingService.database.dao.factory.ImplEnum.ANIMAL_DAO;
 import static com.epam.huntingService.database.dao.factory.ImplEnum.ANIMAL_LIMIT_HISTORY_DAO;
 import static com.epam.huntingService.util.DateConverter.getCurrentYear;
-import static com.epam.huntingService.util.ErrorConstants.*;
-import static com.epam.huntingService.util.PageNameConstants.ACCESS_ERROR_JSP;
-import static com.epam.huntingService.util.PageNameConstants.LIMIT_JSP;
-import static com.epam.huntingService.util.ParameterNamesConstants.*;
+import static com.epam.huntingService.util.constants.ErrorConstants.*;
+import static com.epam.huntingService.util.constants.PageNameConstants.ACCESS_ERROR_JSP;
+import static com.epam.huntingService.util.constants.PageNameConstants.LIMIT_JSP;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.*;
 import static com.epam.huntingService.service.ServiceConstants.ADD_ANIMAL_LIMIT_SERVICE;
 
 public class AddAnimalLimitService implements Service {

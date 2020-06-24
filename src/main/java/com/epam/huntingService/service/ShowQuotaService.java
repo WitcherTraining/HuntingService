@@ -19,8 +19,8 @@ import java.util.List;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.ANIMAL_DAO;
 import static com.epam.huntingService.database.dao.factory.ImplEnum.HUNTING_GROUND_DAO;
-import static com.epam.huntingService.util.PageNameConstants.QUOTA_JSP;
-import static com.epam.huntingService.util.ParameterNamesConstants.*;
+import static com.epam.huntingService.util.constants.PageNameConstants.QUOTA_JSP;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.*;
 
 public class ShowQuotaService implements Service {
     private FactoryDAO factoryDAO = FactoryDAO.getInstance();

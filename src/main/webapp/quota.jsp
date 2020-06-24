@@ -19,7 +19,7 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-<jsp:useBean id="Const" class="com.epam.huntingService.util.ParameterNamesConstants"/>
+<jsp:useBean id="Const" class="com.epam.huntingService.util.constants.ParameterNamesConstants"/>
 <jsp:include page="header.jsp"/>
 <div class="container">
     <div class="col-md-12">

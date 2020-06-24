@@ -17,9 +17,9 @@ import java.text.ParseException;
 import java.util.List;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.USER_DAO;
-import static com.epam.huntingService.util.PageNameConstants.ACCESS_ERROR_JSP;
-import static com.epam.huntingService.util.PageNameConstants.USERS_JSP;
-import static com.epam.huntingService.util.ParameterNamesConstants.*;
+import static com.epam.huntingService.util.constants.PageNameConstants.ACCESS_ERROR_JSP;
+import static com.epam.huntingService.util.constants.PageNameConstants.USERS_JSP;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.*;
 
 public class ShowAllUsersByCategoriesService implements Service {
     private FactoryDAO factoryDAO = FactoryDAO.getInstance();

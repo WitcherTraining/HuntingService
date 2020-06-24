@@ -19,10 +19,10 @@ import java.text.ParseException;
 import java.util.List;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.ANIMAL_DAO;
-import static com.epam.huntingService.util.ErrorConstants.*;
-import static com.epam.huntingService.util.PageNameConstants.ACCESS_ERROR_JSP;
-import static com.epam.huntingService.util.PageNameConstants.EDIT_ANIMAL_JSP;
-import static com.epam.huntingService.util.ParameterNamesConstants.*;
+import static com.epam.huntingService.util.constants.ErrorConstants.*;
+import static com.epam.huntingService.util.constants.PageNameConstants.ACCESS_ERROR_JSP;
+import static com.epam.huntingService.util.constants.PageNameConstants.EDIT_ANIMAL_JSP;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.*;
 import static com.epam.huntingService.service.ServiceConstants.SHOW_ALL_ANIMALS_SERVICE;
 
 public class EditAnimalService implements Service {

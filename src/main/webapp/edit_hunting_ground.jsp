@@ -4,7 +4,7 @@
 <%@ page isELIgnored="false" %>
 <fmt:setLocale value="${sessionScope.language}"/>
 <fmt:setBundle basename="language"/>
-<jsp:useBean id="Const" class="com.epam.huntingService.util.ParameterNamesConstants"/>
+<jsp:useBean id="Const" class="com.epam.huntingService.util.constants.ParameterNamesConstants"/>
 
 <html>
 <style>

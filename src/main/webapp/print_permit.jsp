@@ -5,7 +5,7 @@
 
 <fmt:setLocale value="${sessionScope.language}"/>
 <fmt:setBundle basename="language"/>
-<jsp:useBean id="Const" class="com.epam.huntingService.util.ParameterNamesConstants"/>
+<jsp:useBean id="Const" class="com.epam.huntingService.util.constants.ParameterNamesConstants"/>
 
 <html>
 <head>
@@ -80,7 +80,7 @@
             </tr>
         </table>
 
-        <input type="button" class="d-print-none" value="Печать" onClick="print();"/>
+        <input type="button" class="d-print-none" value="<fmt:message key="button.print.permit"/>" onClick="print();"/>
     </div>
 </div>
 </body>

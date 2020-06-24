@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static com.epam.huntingService.util.ParameterNamesConstants.DIRECTION;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.DIRECTION;
 
 public class ForwardService implements Service {
     @Override

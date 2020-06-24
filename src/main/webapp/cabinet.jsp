@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
-<jsp:useBean id="Const" class="com.epam.huntingService.util.ParameterNamesConstants"/>
+<jsp:useBean id="Const" class="com.epam.huntingService.util.constants.ParameterNamesConstants"/>
 <body>
 <jsp:include page="header.jsp"/>
 <br>
@@ -28,8 +28,9 @@
         <form class="text-right" action="ChangeLanguage" method="get">
             <label>
                 <select name="languageToChange">
-                    <option value="ru_RU">Русский</option>
-                    <option value="en_US">English</option>
+                    <c:forEach var="languages" items="${sessionScope.languages}">
+                        <option value="${languages.language}">${languages.language}</option>
+                    </c:forEach>
                 </select>
             </label>
             <input type="hidden" name="direction" value="cabinet.jsp">

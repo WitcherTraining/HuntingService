@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 import java.util.*;
 
-import static com.epam.huntingService.util.ParameterNamesConstants.*;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.*;
 
 public class HuntingGroundValidator {
     private static OrganizationDAO organizationDAO = new OrganizationDAOImpl();

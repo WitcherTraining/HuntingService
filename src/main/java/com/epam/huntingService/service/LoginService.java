@@ -17,10 +17,10 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.USER_DAO;
-import static com.epam.huntingService.util.ErrorConstants.AUTH_ERROR;
-import static com.epam.huntingService.util.ErrorConstants.LOGIN_ERROR;
-import static com.epam.huntingService.util.PageNameConstants.MAIN_JSP;
-import static com.epam.huntingService.util.ParameterNamesConstants.*;
+import static com.epam.huntingService.util.constants.ErrorConstants.AUTH_ERROR;
+import static com.epam.huntingService.util.constants.ErrorConstants.LOGIN_ERROR;
+import static com.epam.huntingService.util.constants.PageNameConstants.MAIN_JSP;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.*;
 import static com.epam.huntingService.service.ServiceConstants.FORWARD_SERVICE;
 
 public class LoginService implements Service {
@@ -38,6 +38,7 @@ public class LoginService implements Service {
         String login = request.getParameter(LOGIN);
         String password = request.getParameter(PASSWORD);
         String securedPassword = DigestUtils.md5Hex(password);
+        request.getParameterValues("language");
 
         Integer languageID = (Integer) session.getAttribute(LANGUAGE_ID);
 

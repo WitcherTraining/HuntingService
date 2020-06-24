@@ -9,8 +9,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import static com.epam.huntingService.util.PageNameConstants.HUNTING_GROUND_JSP;
-import static com.epam.huntingService.util.ParameterNamesConstants.*;
+import static com.epam.huntingService.util.constants.PageNameConstants.HUNTING_GROUND_JSP;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.*;
 
 public class ShowHuntingGroundService implements Service {
     private HuntingGroundFactory huntingGroundFactory = HuntingGroundFactory.getInstance();

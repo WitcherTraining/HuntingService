@@ -7,7 +7,7 @@ import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.Base64;
 
-import static com.epam.huntingService.util.ParameterNamesConstants.PDF_CONTENT_TYPE;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.PDF_CONTENT_TYPE;
 
 public class FileManager {
     private static final int MAX_SIZE = 4096;

@@ -4,7 +4,6 @@ import com.epam.huntingService.database.dao.factory.FactoryDAO;
 import com.epam.huntingService.database.dao.impl.HuntingGroundDAOImpl;
 import com.epam.huntingService.database.dao.interfaces.HuntingGroundDAO;
 import com.epam.huntingService.entity.HuntingGround;
-import com.epam.huntingService.service.factory.HuntingGroundFactory;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,8 +16,8 @@ import java.text.ParseException;
 import java.util.List;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.HUNTING_GROUND_DAO;
-import static com.epam.huntingService.util.PageNameConstants.SEARCH_RESULTS_JSP;
-import static com.epam.huntingService.util.ParameterNamesConstants.*;
+import static com.epam.huntingService.util.constants.PageNameConstants.SEARCH_RESULTS_JSP;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.*;
 
 public class ShowHuntingGroundsByAnimalService implements Service {
     private FactoryDAO factoryDAO = FactoryDAO.getInstance();

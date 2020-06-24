@@ -16,9 +16,9 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.ANIMAL_LIMIT_HISTORY_DAO;
-import static com.epam.huntingService.util.PageNameConstants.ACCESS_ERROR_JSP;
-import static com.epam.huntingService.util.PageNameConstants.EDIT_LIMIT_JSP;
-import static com.epam.huntingService.util.ParameterNamesConstants.*;
+import static com.epam.huntingService.util.constants.PageNameConstants.ACCESS_ERROR_JSP;
+import static com.epam.huntingService.util.constants.PageNameConstants.EDIT_LIMIT_JSP;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.*;
 
 public class PrepareAnimalLimitEditingService implements Service {
     private FactoryDAO factoryDAO = FactoryDAO.getInstance();

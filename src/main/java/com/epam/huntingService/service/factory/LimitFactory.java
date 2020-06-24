@@ -15,7 +15,7 @@ import java.util.List;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.ANIMAL_DAO;
 import static com.epam.huntingService.database.dao.factory.ImplEnum.ANIMAL_LIMIT_HISTORY_DAO;
-import static com.epam.huntingService.util.ParameterNamesConstants.*;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.*;
 
 public class LimitFactory {
     private static LimitFactory instance = new LimitFactory();

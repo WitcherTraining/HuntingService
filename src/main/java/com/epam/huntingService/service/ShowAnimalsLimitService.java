@@ -20,10 +20,10 @@ import java.util.List;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.ANIMAL_DAO;
 import static com.epam.huntingService.util.DateConverter.*;
-import static com.epam.huntingService.util.ErrorConstants.WRONG_YEAR_DATA;
-import static com.epam.huntingService.util.ErrorConstants.YEAR_ERROR;
-import static com.epam.huntingService.util.PageNameConstants.LIMIT_JSP;
-import static com.epam.huntingService.util.ParameterNamesConstants.*;
+import static com.epam.huntingService.util.constants.ErrorConstants.WRONG_YEAR_DATA;
+import static com.epam.huntingService.util.constants.ErrorConstants.YEAR_ERROR;
+import static com.epam.huntingService.util.constants.PageNameConstants.LIMIT_JSP;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.*;
 
 public class ShowAnimalsLimitService implements Service {
     private FactoryDAO factoryDAO = FactoryDAO.getInstance();

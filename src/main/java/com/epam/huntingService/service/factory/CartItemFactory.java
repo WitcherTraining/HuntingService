@@ -14,7 +14,7 @@ import java.util.Date;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.ANIMAL_QUOTA_HISTORY_DAO;
 import static com.epam.huntingService.database.dao.factory.ImplEnum.HUNTING_GROUND_DAO;
-import static com.epam.huntingService.util.ParameterNamesConstants.*;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.*;
 
 public class CartItemFactory {
     private static CartItemFactory instance = new CartItemFactory();

@@ -21,8 +21,8 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.*;
-import static com.epam.huntingService.util.PageNameConstants.*;
-import static com.epam.huntingService.util.ParameterNamesConstants.*;
+import static com.epam.huntingService.util.constants.PageNameConstants.*;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.*;
 
 public class PreparePermitToPrintService implements Service {
     private FactoryDAO factoryDAO = FactoryDAO.getInstance();

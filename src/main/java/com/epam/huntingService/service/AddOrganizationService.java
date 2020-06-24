@@ -20,10 +20,10 @@ import java.util.Collection;
 import java.util.List;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.ORGANIZATION_DAO;
-import static com.epam.huntingService.util.ErrorConstants.*;
-import static com.epam.huntingService.util.PageNameConstants.ACCESS_ERROR_JSP;
-import static com.epam.huntingService.util.PageNameConstants.ORGANIZATIONS_JSP;
-import static com.epam.huntingService.util.ParameterNamesConstants.*;
+import static com.epam.huntingService.util.constants.ErrorConstants.*;
+import static com.epam.huntingService.util.constants.PageNameConstants.ACCESS_ERROR_JSP;
+import static com.epam.huntingService.util.constants.PageNameConstants.ORGANIZATIONS_JSP;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.*;
 import static com.epam.huntingService.service.ServiceConstants.SHOW_ALL_ORGANIZATIONS_SERVICE;
 import static com.epam.huntingService.validator.OrganizationValidator.isOrganizationExist;
 import static com.epam.huntingService.validator.OrganizationValidator.isValidFileType;

@@ -22,7 +22,7 @@ import java.util.Collection;
 import java.util.List;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.*;
-import static com.epam.huntingService.util.ParameterNamesConstants.*;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.*;
 
 public class OrganizationFactory {
     private static OrganizationFactory instance = new OrganizationFactory();

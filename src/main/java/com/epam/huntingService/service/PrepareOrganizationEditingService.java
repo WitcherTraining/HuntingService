@@ -17,9 +17,9 @@ import java.text.ParseException;
 import java.util.List;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.ORGANIZATION_DAO;
-import static com.epam.huntingService.util.PageNameConstants.ACCESS_ERROR_JSP;
-import static com.epam.huntingService.util.PageNameConstants.EDIT_ORGANIZATION_JSP;
-import static com.epam.huntingService.util.ParameterNamesConstants.*;
+import static com.epam.huntingService.util.constants.PageNameConstants.ACCESS_ERROR_JSP;
+import static com.epam.huntingService.util.constants.PageNameConstants.EDIT_ORGANIZATION_JSP;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.*;
 
 public class PrepareOrganizationEditingService implements Service {
     private FactoryDAO factoryDAO = FactoryDAO.getInstance();

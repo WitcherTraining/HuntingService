@@ -19,10 +19,10 @@ import java.text.ParseException;
 import java.util.List;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.HUNTING_GROUND_DAO;
-import static com.epam.huntingService.util.ErrorConstants.*;
-import static com.epam.huntingService.util.PageNameConstants.ACCESS_ERROR_JSP;
-import static com.epam.huntingService.util.PageNameConstants.EDIT_HUNTING_GROUND_JSP;
-import static com.epam.huntingService.util.ParameterNamesConstants.ADMIN_ROLE_ID;
+import static com.epam.huntingService.util.constants.ErrorConstants.*;
+import static com.epam.huntingService.util.constants.PageNameConstants.ACCESS_ERROR_JSP;
+import static com.epam.huntingService.util.constants.PageNameConstants.EDIT_HUNTING_GROUND_JSP;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.ADMIN_ROLE_ID;
 import static com.epam.huntingService.service.ServiceConstants.SHOW_ALL_HUNTING_GROUNDS_SERVICE;
 
 public class EditHuntingGroundService implements Service {

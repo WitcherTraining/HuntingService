@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
-<jsp:useBean id="Const" class="com.epam.huntingService.util.ParameterNamesConstants"/>
+<jsp:useBean id="Const" class="com.epam.huntingService.util.constants.ParameterNamesConstants"/>
 <body>
 <jsp:include page="header.jsp"/>
 <div class="container text-center text-light">

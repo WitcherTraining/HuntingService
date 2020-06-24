@@ -9,8 +9,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import static com.epam.huntingService.util.PageNameConstants.ORGANIZATION_JSP;
-import static com.epam.huntingService.util.ParameterNamesConstants.*;
+import static com.epam.huntingService.util.constants.PageNameConstants.ORGANIZATION_JSP;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.*;
 
 public class ShowOrganizationService implements Service {
     private OrganizationFactory organizationFactory = OrganizationFactory.getInstance();

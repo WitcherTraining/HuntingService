@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 
-import static com.epam.huntingService.util.PageNameConstants.ERROR_JSP;
+import static com.epam.huntingService.util.constants.PageNameConstants.ERROR_JSP;
 
 public class ErrorService implements Service {
     @Override

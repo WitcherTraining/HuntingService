@@ -5,7 +5,7 @@ import javax.servlet.http.HttpSession;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import static com.epam.huntingService.util.ParameterNamesConstants.LANGUAGE;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.LANGUAGE;
 
 public class ErrorManager {
 

@@ -12,8 +12,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import static com.epam.huntingService.util.PageNameConstants.HUNTING_GROUND_JSP;
-import static com.epam.huntingService.util.ParameterNamesConstants.*;
+import static com.epam.huntingService.util.constants.PageNameConstants.HUNTING_GROUND_JSP;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.*;
 
 public class AddToCartService implements Service {
     private CartItemFactory cartItemFactory = CartItemFactory.getInstance();

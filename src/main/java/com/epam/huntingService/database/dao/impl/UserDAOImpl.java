@@ -12,7 +12,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.epam.huntingService.util.ParameterNamesConstants.USER_ROLE_ID;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.USER_ROLE_ID;
 
 public class UserDAOImpl implements UserDAO {
     private RoleDAOImpl roleDAO = new RoleDAOImpl();

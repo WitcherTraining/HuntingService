@@ -4,7 +4,7 @@
 <%@ page isELIgnored="false" %>
 <fmt:setLocale value="${sessionScope.language}"/>
 <fmt:setBundle basename="language"/>
-<jsp:useBean id="Const" class="com.epam.huntingService.util.ParameterNamesConstants"/>
+<jsp:useBean id="Const" class="com.epam.huntingService.util.constants.ParameterNamesConstants"/>
 
 <html>
 <style>
@@ -20,8 +20,7 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-<jsp:include page="header.jsp"/>
-<div class="container">
+<jsp:include page="header.jsp"/><div class="container-fluid">
     <div class="col-md-12">
 
         <c:if test="${sessionScope.roleID eq Const.adminRoleId}">

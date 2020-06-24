@@ -2,7 +2,7 @@ package com.epam.huntingService.validator;
 
 import javax.servlet.http.HttpSession;
 
-import static com.epam.huntingService.util.ParameterNamesConstants.ROLE_ID;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.ROLE_ID;
 
 public class AccessValidator {
 

@@ -17,9 +17,9 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.USER_DAO;
-import static com.epam.huntingService.util.ErrorConstants.*;
-import static com.epam.huntingService.util.PageNameConstants.*;
-import static com.epam.huntingService.util.ParameterNamesConstants.*;
+import static com.epam.huntingService.util.constants.ErrorConstants.*;
+import static com.epam.huntingService.util.constants.PageNameConstants.*;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.*;
 import static com.epam.huntingService.validator.AuthorizationValidator.*;
 
 

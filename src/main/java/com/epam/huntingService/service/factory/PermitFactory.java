@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.*;
-import static com.epam.huntingService.util.ParameterNamesConstants.ITEM_ID;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.ITEM_ID;
 
 public class PermitFactory {
     private static PermitFactory instance = new PermitFactory();

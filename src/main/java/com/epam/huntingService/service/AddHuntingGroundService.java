@@ -19,11 +19,11 @@ import java.text.ParseException;
 import java.util.List;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.*;
-import static com.epam.huntingService.util.ErrorConstants.*;
-import static com.epam.huntingService.util.PageNameConstants.ACCESS_ERROR_JSP;
-import static com.epam.huntingService.util.PageNameConstants.HUNTING_GROUNDS_JSP;
-import static com.epam.huntingService.util.ParameterNamesConstants.ADMIN_ROLE_ID;
-import static com.epam.huntingService.util.ParameterNamesConstants.HUNTING_GROUND_NAME;
+import static com.epam.huntingService.util.constants.ErrorConstants.*;
+import static com.epam.huntingService.util.constants.PageNameConstants.ACCESS_ERROR_JSP;
+import static com.epam.huntingService.util.constants.PageNameConstants.HUNTING_GROUNDS_JSP;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.ADMIN_ROLE_ID;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.HUNTING_GROUND_NAME;
 import static com.epam.huntingService.service.ServiceConstants.SHOW_ALL_HUNTING_GROUNDS_SERVICE;
 import static com.epam.huntingService.validator.HuntingGroundValidator.*;
 

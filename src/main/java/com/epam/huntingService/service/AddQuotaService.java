@@ -17,11 +17,11 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.ANIMAL_QUOTA_HISTORY_DAO;
-import static com.epam.huntingService.util.ErrorConstants.EMPTY_DATA;
-import static com.epam.huntingService.util.ErrorConstants.FILL_DATA_ERROR;
-import static com.epam.huntingService.util.PageNameConstants.ACCESS_ERROR_JSP;
-import static com.epam.huntingService.util.PageNameConstants.QUOTA_JSP;
-import static com.epam.huntingService.util.ParameterNamesConstants.*;
+import static com.epam.huntingService.util.constants.ErrorConstants.EMPTY_DATA;
+import static com.epam.huntingService.util.constants.ErrorConstants.FILL_DATA_ERROR;
+import static com.epam.huntingService.util.constants.PageNameConstants.ACCESS_ERROR_JSP;
+import static com.epam.huntingService.util.constants.PageNameConstants.QUOTA_JSP;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.*;
 import static com.epam.huntingService.service.ServiceConstants.SHOW_QUOTA_SERVICE;
 
 public class AddQuotaService implements Service {

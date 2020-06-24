@@ -20,9 +20,9 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.*;
-import static com.epam.huntingService.util.PageNameConstants.ACCESS_ERROR_JSP;
-import static com.epam.huntingService.util.PageNameConstants.EDIT_QUOTA_JSP;
-import static com.epam.huntingService.util.ParameterNamesConstants.*;
+import static com.epam.huntingService.util.constants.PageNameConstants.ACCESS_ERROR_JSP;
+import static com.epam.huntingService.util.constants.PageNameConstants.EDIT_QUOTA_JSP;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.*;
 
 public class PrepareQuotaEditingService implements Service {
     private FactoryDAO factoryDAO = FactoryDAO.getInstance();

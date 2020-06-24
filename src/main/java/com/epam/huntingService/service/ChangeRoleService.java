@@ -17,8 +17,8 @@ import java.text.ParseException;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.ROLE_DAO;
 import static com.epam.huntingService.database.dao.factory.ImplEnum.USER_DAO;
-import static com.epam.huntingService.util.PageNameConstants.ACCESS_ERROR_JSP;
-import static com.epam.huntingService.util.ParameterNamesConstants.*;
+import static com.epam.huntingService.util.constants.PageNameConstants.ACCESS_ERROR_JSP;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.*;
 import static com.epam.huntingService.service.ServiceConstants.SHOW_ALL_USERS_BY_CATEGORIES_SERVICE;
 
 public class ChangeRoleService implements Service {

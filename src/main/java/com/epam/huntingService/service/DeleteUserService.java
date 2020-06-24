@@ -15,9 +15,9 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.USER_DAO;
-import static com.epam.huntingService.util.PageNameConstants.ACCESS_ERROR_JSP;
-import static com.epam.huntingService.util.ParameterNamesConstants.ADMIN_ROLE_ID;
-import static com.epam.huntingService.util.ParameterNamesConstants.USER_ID;
+import static com.epam.huntingService.util.constants.PageNameConstants.ACCESS_ERROR_JSP;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.ADMIN_ROLE_ID;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.USER_ID;
 import static com.epam.huntingService.service.ServiceConstants.SHOW_ALL_USERS_BY_CATEGORIES_SERVICE;
 
 public class DeleteUserService implements Service {

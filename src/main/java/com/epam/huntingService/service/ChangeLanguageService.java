@@ -15,7 +15,7 @@ import java.text.ParseException;
 
 import static com.epam.huntingService.database.dao.factory.ImplEnum.LANGUAGE_DAO;
 import static com.epam.huntingService.database.dao.factory.ImplEnum.ROLE_DAO;
-import static com.epam.huntingService.util.ParameterNamesConstants.*;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.*;
 import static com.epam.huntingService.service.ServiceConstants.FORWARD_SERVICE;
 import static com.epam.huntingService.service.ServiceConstants.SHOW_ORDERED_PERMITS_SERVICE;
 

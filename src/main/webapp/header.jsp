@@ -6,7 +6,7 @@
 <fmt:setBundle basename="language"/>
 
 <jsp:useBean id="year" class="com.epam.huntingService.util.DateConverter"/>
-<jsp:useBean id="Const" class="com.epam.huntingService.util.ParameterNamesConstants"/>
+<jsp:useBean id="Const" class="com.epam.huntingService.util.constants.ParameterNamesConstants"/>
 
 <a href="main.jsp" class="btn btn-dark btn-lg btn-block active">
     <span class="badge"><img src="img/hunting.jpg" class="rounded-circle" alt="..." width="50" height="50"/></span>

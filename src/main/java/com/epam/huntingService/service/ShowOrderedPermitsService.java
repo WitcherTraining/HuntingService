@@ -1,5 +1,9 @@
 package com.epam.huntingService.service;
 
+import com.epam.huntingService.database.dao.factory.FactoryDAO;
+import com.epam.huntingService.database.dao.factory.ImplEnum;
+import com.epam.huntingService.database.dao.impl.LanguageDAOImpl;
+import com.epam.huntingService.database.dao.interfaces.LanguageDAO;
 import com.epam.huntingService.entity.*;
 import com.epam.huntingService.service.factory.PermitFactory;
 import com.epam.huntingService.validator.AccessValidator;
@@ -14,12 +18,14 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
 
-import static com.epam.huntingService.util.PageNameConstants.CABINET_JSP;
-import static com.epam.huntingService.util.PageNameConstants.REGISTRATION_JSP;
-import static com.epam.huntingService.util.ParameterNamesConstants.*;
+import static com.epam.huntingService.util.constants.PageNameConstants.CABINET_JSP;
+import static com.epam.huntingService.util.constants.PageNameConstants.REGISTRATION_JSP;
+import static com.epam.huntingService.util.constants.ParameterNamesConstants.*;
 
 public class ShowOrderedPermitsService implements Service {
     private PermitFactory permitFactory = PermitFactory.getInstance();
+    private FactoryDAO factoryDAO = FactoryDAO.getInstance();
+    private LanguageDAO languageDAO = (LanguageDAOImpl) factoryDAO.getDAO(ImplEnum.LANGUAGE_DAO);
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException, SQLException {
@@ -34,6 +40,7 @@ public class ShowOrderedPermitsService implements Service {
             Integer languageID = (Integer) session.getAttribute(LANGUAGE_ID);
             List<Permit> permits = permitFactory.prepareAllPermitsByUser(userID, languageID);
             session.setAttribute(PERMITS, permits);
+            session.setAttribute(LANGUAGES, languageDAO.getAll());
             response.sendRedirect(CABINET_JSP);
         } else {
             dispatcher = request.getRequestDispatcher(REGISTRATION_JSP);
