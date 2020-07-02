@@ -1,6 +1,7 @@
 package com.epam.huntingService.database.connection;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.Driver;
@@ -14,7 +15,7 @@ import static java.lang.Integer.parseInt;
 
 public final class ConnectionPool {
 
-    private final Logger LOGGER = Logger.getLogger(this.getClass().getName());
+    private final Logger LOGGER = LogManager.getLogger(this.getClass().getName());
     private String url;
     private String user;
     private String password;

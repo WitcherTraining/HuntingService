@@ -2,7 +2,8 @@ package com.epam.huntingService.controller;
 
 import com.epam.huntingService.service.Service;
 import com.epam.huntingService.service.ServiceFactory;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +15,7 @@ import java.text.ParseException;
 
 public class HuntingServiceController extends HttpServlet {
     private static long serialVersionUID = 1L;
-    private final Logger LOGGER = Logger.getLogger(this.getClass().getName());
+    private final Logger LOGGER = LogManager.getLogger(this.getClass().getName());
 
     public HuntingServiceController(){
         super();
